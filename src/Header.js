@@ -2,7 +2,7 @@ const Header = () => {
     return(
         <header> 
             <h1>Recipe Generator</h1>
-            <p>Pick an ingredient to find a recipe!</p>
+            <h2>Pick an ingredient to find a recipe!</h2>
         </header>
     )
 }

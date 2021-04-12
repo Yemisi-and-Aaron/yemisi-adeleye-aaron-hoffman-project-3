@@ -1,10 +1,12 @@
 
 
-const Result = ( {recipeResult, key} ) => {
+const Result = ( {recipeResult } ) => {
     return(
         <li className="result" id={recipeResult.idMeal}>
-            <h2>{recipeResult.strMeal}</h2>
-            <img src={recipeResult.strMealThumb} alt={recipeResult.strMeal}/>
+            <h3>{recipeResult.strMeal}</h3>
+            <div className="imgContainer">
+                <img src={recipeResult.strMealThumb} alt={recipeResult.strMeal}/>
+            </div>
         </li>
     )
 }

@@ -7,3 +7,135 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 *, *:before, *:after {box-sizing: inherit}
 
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
+
+
+/* 
+seafoam: #91C7A1
+light green: #AAD079
+green: #C3D850
+pastel yellow: #EEE766
+forest green: #2C4C0E
+
+
+
+ */
+
+
+html {
+    background: #AAD079;
+    font-size: 125%;
+}
+
+img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+.wrapper {
+    margin: 0 auto;
+    width: 80%;
+    max-width: 1100px;
+}
+
+
+h1, 
+h2,
+p,
+li,
+label {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1,
+h2,
+h3,
+form {
+    text-align: center;
+    color: #2C4C0E;
+}
+
+h1 {
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+    font-size: 4.5rem;
+}
+
+.headerContainer {
+    /* background: #95BA67; */
+    padding: 50px;
+    margin-top: 40px;
+}
+
+h2 {
+    padding: 20px;
+    font-size: 1rem;
+    /* border-bottom: solid 2px #2C4C0E;
+    width: 40%;
+    margin: 0 auto 30px; */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid 1px #2C4C0E;
+    padding: 30px;
+    width: 60%;
+    margin: 0 auto;
+}
+
+input:focus {
+    outline: 2px solid #2C4C0E;
+}
+
+button {
+    width: 50%;
+    margin: 20px 0;
+    padding: 15px;
+    font-family: 'Raleway', sans-serif;
+    background: #2C4C0E;
+    color: #fff;
+    border: none;
+
+}
+
+button:hover {
+    background: #fff;
+    color: #2C4C0E;
+}
+
+label {
+    margin: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 1.5rem;
+}
+
+.recipesList {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    border: solid 1px #2C4C0E;
+}
+
+.recipesList li {
+    margin: 15px;
+    width: calc( 33% - 30px );
+}
+/* need to figure out a way to make the h3 stay on one line when screen size shrinks */
+
+
+@media(max-width: 1000px) {
+    .recipesList li {
+        width: calc( 50% - 30px );
+    }
+}
+
+@media(max-width: 600px) {
+    .recipesList li {
+        width: 100%;
+    }
+}

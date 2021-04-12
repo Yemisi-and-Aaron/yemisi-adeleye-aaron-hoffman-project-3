@@ -7,8 +7,10 @@ const Form = ( {buttonClick} ) => {
 
     return(
         <form action="">
-            <label htmlFor="ingredient">Select an ingredient:</label>
-            <input type="text" id="ingredient" onChange={(event) =>  {setIngredient(event.target.value)} } />
+            <div className="labelInput">
+                <label htmlFor="ingredient">Select an ingredient:</label>
+                <input type="text" id="ingredient" onChange={(event) =>  {setIngredient(event.target.value)} } />
+            </div>
             <button onClick={(event) => buttonClick(event, ingredient)}>Find recipes!</button>
         </form>
     )

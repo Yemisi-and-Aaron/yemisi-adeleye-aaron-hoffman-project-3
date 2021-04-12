@@ -2,11 +2,13 @@ import './App.css';
 import Header from './Header.js';
 import Form from './Form.js';
 import Result from './Result.js';
+import IndividualRecipe from './IndividualRecipe';
 import { useState } from 'react';
 
 function App() {
   //  This state will store API results when they arrive
   const [recipes, setRecipes] = useState([]);
+  const [recipeDetails, setRecipeDetails] = useState({});
 
   // Listen for click on find recipes button
   const handleClick = (event, ingredient) => {
@@ -22,7 +24,7 @@ function App() {
         return response.json();
       })
       .then(function(jsonResponse) {
-        console.log(jsonResponse.meals);
+        // console.log(jsonResponse.meals);
         setRecipes(jsonResponse.meals);
       })
   }
@@ -39,21 +41,27 @@ function App() {
 
     fetch(url)
       .then(function(response) { 
+        // console.log(response.json());
         return response.json();
       })
       .then(function(jsonResponse) {
         console.log(jsonResponse);
+        setRecipeDetails(jsonResponse.meals[0]);
       })
+
       // Maybe here set recipes to []
+      setRecipes([]);
       // make a component for full recipe and put all the stuff in there
   }
   
   return (
     <div className="App">
-      <Header />
-      <Form buttonClick={handleClick} />
+      <div className="headerContainer wrapper">
+        <Header />
+        <Form buttonClick={handleClick} />
+        </div>
       {/* Some kind of if statement to handle no response from the API */}
-      <ul onClick={getRecipeDetails}>
+      <ul className="recipesList wrapper" onClick={getRecipeDetails}>
         {
           recipes.map( (individualRecipe) => {
             return(
@@ -62,6 +70,7 @@ function App() {
           })
         }
       </ul>
+      <IndividualRecipe recipeDetails={recipeDetails} />
     </div>
   );
 }
