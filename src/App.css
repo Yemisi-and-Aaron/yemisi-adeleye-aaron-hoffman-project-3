@@ -83,7 +83,7 @@ form {
     align-items: center;
     border: solid 1px #2C4C0E;
     padding: 30px;
-    width: 60%;
+    width: 90%;
     margin: 0 auto;
 }
 
@@ -127,15 +127,135 @@ label {
 }
 /* need to figure out a way to make the h3 stay on one line when screen size shrinks */
 
+.fullRecipe h2 {
+    margin-top: 20px;
+    font-size: 3rem; 
+}
+
+.flexContainer {
+    display: flex;
+    align-items: center;
+    margin: 20px 50px 40px 50px;
+}
+
+.flexContainer div {
+    width: 60%;
+}
+
+.flexContainer ul {
+    width: calc(40% - 30px);
+    height: 50%;
+    margin-left: 30px;
+}
+
+
+.fullRecipe li {
+    line-height: 1.2rem;
+    color: #2C4C0E;
+}
+
+.fullRecipe p {
+    margin: 0 50px 30px;
+    line-height: 1.5rem;
+    color: #2C4C0E;
+}
+
+
 
 @media(max-width: 1000px) {
+    /* form {
+        width: 90%;
+    } */
+
     .recipesList li {
         width: calc( 50% - 30px );
     }
 }
 
+@media(max-width: 950px) {
+    .labelInput {
+        width: 80%;
+    }
+
+    input {
+        margin: 20px 0 10px;
+        width: 70%;
+    }
+
+    .flexContainer {
+        flex-direction: column;
+    }
+
+    .flexContainer div,
+    .flexContainer ul {
+        width: 100%;
+    }
+
+    .flexContainer ul {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 50px;
+        padding-left: 20px;
+        justify-content: space-between;
+    }
+
+    .flexContainer li {
+        width: 40%;
+    }
+}
+
+@media(max-width: 775px) {
+    .wrapper {
+        width: 90%;
+    }
+
+    h1{ 
+        font-size: 3.8rem;
+    }
+
+    .flexContainer ul {
+        flex-direction: column;
+    }
+
+    .flexContainer li {
+        width: 100%;
+    }
+}
+
 @media(max-width: 600px) {
+    h1{
+        font-size: 3rem;
+    }
+
     .recipesList li {
         width: 100%;
+    }
+}
+
+@media(max-width: 500px) {
+    h1{
+        font-size: 2rem;
+    }
+
+    form {
+        width: 100%;
+        padding: 10px 5px;
+    }
+
+    .labelInput {
+        width: 100%;
+    }
+
+    label {
+        font-size: 1.3rem;
+        margin: 0;
+    }
+
+    button {
+        width: 90%;
+    }
+
+    .fullRecipe h2 {
+        font-size: 2rem;
     }
 }
