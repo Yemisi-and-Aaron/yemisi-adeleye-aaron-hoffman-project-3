@@ -15,16 +15,20 @@ const IndividualRecipe = ({ recipeDetails }) => {
 
     return(
         
-    <div>
+    <div className="fullRecipe wrapper">
         <h2>{recipeDetails.strMeal}</h2>
-        <img src={recipeDetails.strMealThumb} alt={recipeDetails.strMeal} />
-        <ul>
-            {ingredientArray.map( (ingredientItem, index) => {
-                return(
-                    <li key={index}>{ingredientItem}</li>
-                )
-            })}
-        </ul>
+        <div className="flexContainer">
+            <div className="imgContainer">
+                <img src={recipeDetails.strMealThumb} alt={recipeDetails.strMeal} />
+            </div>
+            <ul>
+                {ingredientArray.map( (ingredientItem, index) => {
+                    return(
+                        <li key={index}>{ingredientItem}</li>
+                    )
+                })}
+            </ul>
+        </div>
         <p>{recipeDetails.strInstructions}</p>
     </div>
     )
