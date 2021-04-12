@@ -7,7 +7,7 @@ const IndividualRecipe = ({ recipeDetails }) => {
         const measure = `strMeasure${i}`;
 
         if (recipeDetails[ingredient]) {
-           ingredientArray.push(`${recipeDetails[ingredient]}: ${recipeDetails[measure]}`);
+            ingredientArray.push(`${recipeDetails[ingredient]}: ${recipeDetails[measure]}`);
         }
         
     }
@@ -19,9 +19,9 @@ const IndividualRecipe = ({ recipeDetails }) => {
         <h2>{recipeDetails.strMeal}</h2>
         <img src={recipeDetails.strMealThumb} alt={recipeDetails.strMeal} />
         <ul>
-            {ingredientArray.map( (ingredientItem) => {
+            {ingredientArray.map( (ingredientItem, index) => {
                 return(
-                    <li>{ingredientItem}</li>
+                    <li key={index}>{ingredientItem}</li>
                 )
             })}
         </ul>

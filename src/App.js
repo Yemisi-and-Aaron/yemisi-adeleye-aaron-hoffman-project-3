@@ -32,7 +32,8 @@ function App() {
   // Listen for click and get recipe details for the recipe that is clicked on
   const getRecipeDetails = (event) => {
     //  When the user clicks a recipe 
-    const recipeNumber = event.target.parentNode.id;
+    const recipeNumber = event.target.classList[0];
+    console.log(recipeNumber);
     // We need get the ID of the recipe and pass it to the API call
     const url = new URL('https://www.themealdb.com/api/json/v1/1/lookup.php')
     url.search = new URLSearchParams({
@@ -41,7 +42,7 @@ function App() {
 
     fetch(url)
       .then(function(response) { 
-        // console.log(response.json());
+        console.log(response);
         return response.json();
       })
       .then(function(jsonResponse) {
@@ -49,9 +50,8 @@ function App() {
         setRecipeDetails(jsonResponse.meals[0]);
       })
 
-      // Maybe here set recipes to []
+      // Set recipes to []
       setRecipes([]);
-      // make a component for full recipe and put all the stuff in there
   }
   
   return (
