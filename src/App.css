@@ -160,6 +160,26 @@ label {
     color: #2C4C0E;
 }
 
+.saveButton {
+    margin: 0 auto;
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+    background: #2C4C0E;
+    color: #fff;
+}
+
+footer a {
+    text-decoration: none;
+    color:#AAD079;
+}
+
+footer a:hover {
+    color: #fff;
+}
+
 
 
 @media(max-width: 1000px) {

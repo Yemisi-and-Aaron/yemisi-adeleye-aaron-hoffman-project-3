@@ -1,3 +1,5 @@
+import firebase from './firebase.js';
+
 const IndividualRecipe = ({ recipeDetails }) => {
 
     const ingredientArray = [];
@@ -12,6 +14,10 @@ const IndividualRecipe = ({ recipeDetails }) => {
         
     }
     
+    const saveRecipe = () => {
+        const dbRef = firebase.database().ref();
+        dbRef.push(recipeDetails.strMeal);
+    }
 
     return(
         
@@ -30,6 +36,7 @@ const IndividualRecipe = ({ recipeDetails }) => {
             </ul>
         </div>
         <p>{recipeDetails.strInstructions}</p>
+        <button className="saveButton"onClick={saveRecipe}>Save for later</button>
     </div>
     )
 }
