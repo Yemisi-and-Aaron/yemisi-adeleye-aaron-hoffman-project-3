@@ -16,6 +16,8 @@ function App() {
   // Listen for click on find recipes button
   const handleClick = (event, ingredient) => {
     event.preventDefault();
+    // Empty full recipe 
+    setRecipeDetails({});
     // call API with current value of ingredient
     const url = new URL('https://www.themealdb.com/api/json/v1/1/filter.php')
     url.search = new URLSearchParams({
@@ -33,10 +35,10 @@ function App() {
   }
 
   // Listen for click and get recipe details for the recipe that is clicked on
-  const getRecipeDetails = (event) => {
+  const getRecipeDetails = (recipeNumber) => {
     //  When the user clicks a recipe 
-    const recipeNumber = event.target.classList[0];
-   
+    // const recipeNumber = event.target.classList[0];
+
     // We need get the ID of the recipe and pass it to the API call
     const url = new URL('https://www.themealdb.com/api/json/v1/1/lookup.php')
     url.search = new URLSearchParams({
@@ -55,9 +57,11 @@ function App() {
       setRecipes([]);
   }
 
+
  const [faveRecipes, setFaveRecipes] = useState([]);
 
  useEffect( () => {
+  console.log('useEffect');
   const dbRef = firebase.database().ref();
 
   dbRef.on('value', (response) => {
@@ -65,9 +69,11 @@ function App() {
     const data = response.val();
 
     for (let key in data) {
+      console.log(data[key])
         favesArray.push({
           key: key,
-          name: data[key]
+          name: data[key].name,
+          id: data[key].id
         });
       }
       setFaveRecipes(favesArray);
@@ -82,7 +88,7 @@ function App() {
         <Form buttonClick={handleClick} />
         </div>
       {/* Some kind of if statement to handle no response from the API */}
-      <ul className="recipesList wrapper" onClick={getRecipeDetails}>
+      <ul className="recipesList wrapper" onClick={(e) => getRecipeDetails(e.target.classList[0])}>
         {
           recipes.map( (individualRecipe) => {
             return(
@@ -92,7 +98,7 @@ function App() {
         }
       </ul>
       <IndividualRecipe recipeDetails={recipeDetails} />
-      <FaveRecipes recipesArray={faveRecipes} />
+      <FaveRecipes recipesArray={faveRecipes} getRecipeDetails={getRecipeDetails} />
       <Footer />
     </div>
   );

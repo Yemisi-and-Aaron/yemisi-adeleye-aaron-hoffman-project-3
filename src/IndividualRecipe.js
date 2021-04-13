@@ -10,13 +10,15 @@ const IndividualRecipe = ({ recipeDetails }) => {
 
         if (recipeDetails[ingredient]) {
             ingredientArray.push(`${recipeDetails[ingredient]}: ${recipeDetails[measure]}`);
-        }
-        
+        }    
     }
     
     const saveRecipe = () => {
         const dbRef = firebase.database().ref();
-        dbRef.push(recipeDetails.strMeal);
+        dbRef.push({
+            name: recipeDetails.strMeal,
+            id: recipeDetails.idMeal
+        });
     }
 
     return(
