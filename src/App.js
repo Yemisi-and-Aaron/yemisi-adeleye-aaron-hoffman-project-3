@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 import firebase from './firebase.js';
 
 function App() {
-  //  This state will store API results when they arrive
+  //  These states will store API results when they arrive
   const [recipes, setRecipes] = useState([]);
   const [recipeDetails, setRecipeDetails] = useState({});
 
@@ -36,10 +36,8 @@ function App() {
 
   // Listen for click and get recipe details for the recipe that is clicked on
   const getRecipeDetails = (recipeNumber) => {
-    //  When the user clicks a recipe 
-    // const recipeNumber = event.target.classList[0];
 
-    // We need get the ID of the recipe and pass it to the API call
+    // We pass recipeNumber to the url for the API call
     const url = new URL('https://www.themealdb.com/api/json/v1/1/lookup.php')
     url.search = new URLSearchParams({
         i: recipeNumber
@@ -57,28 +55,31 @@ function App() {
       setRecipes([]);
   }
 
+//  This state holds faveRecipes list from firebase
+const [faveRecipes, setFaveRecipes] = useState([]);
 
- const [faveRecipes, setFaveRecipes] = useState([]);
-
- useEffect( () => {
-  console.log('useEffect');
+useEffect( () => {
+  
   const dbRef = firebase.database().ref();
 
   dbRef.on('value', (response) => {
+    //  Empty array to push recipes into
     const favesArray = [];
+    //  Response from firebase
     const data = response.val();
 
+    //  Push an object into the array for each recipe
     for (let key in data) {
-      console.log(data[key])
         favesArray.push({
           key: key,
           name: data[key].name,
           id: data[key].id
         });
       }
+      //  Set fave recipes to the new array
       setFaveRecipes(favesArray);
   })
- }, [])
+}, [])
 
   
   return (
@@ -87,8 +88,8 @@ function App() {
         <Header />
         <Form buttonClick={handleClick} />
         </div>
-      {/* Some kind of if statement to handle no response from the API */}
       <ul className="recipesList wrapper" onClick={(e) => getRecipeDetails(e.target.classList[0])}>
+        {/* If there is a response from the api, map through and display, otherwise print an error messsage  */}
         {
           recipes ? (
           recipes.map( (individualRecipe) => {
