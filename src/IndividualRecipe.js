@@ -20,7 +20,7 @@ const IndividualRecipe = ({ recipeDetails }) => {
             id: recipeDetails.idMeal
         });
     }
-
+    console.log(recipeDetails.strMeal);
     return(
         
     <div className="fullRecipe wrapper">
@@ -38,7 +38,15 @@ const IndividualRecipe = ({ recipeDetails }) => {
             </ul>
         </div>
         <p>{recipeDetails.strInstructions}</p>
-        <button className="saveButton"onClick={saveRecipe}>Save for later</button>
+
+        {recipeDetails.strMeal ? (
+            <button className="saveButton" onClick={saveRecipe}>Save for later</button>
+            ) : (
+                
+                null
+            
+
+        )}
     </div>
     )
 }
