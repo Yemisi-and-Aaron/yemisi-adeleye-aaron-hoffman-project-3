@@ -25,8 +25,8 @@ function App() {
     })
 
     fetch(url)
-      .then(function(response) { 
-        return response.json();
+      .then(function(response) {
+          return response.json();
       })
       .then(function(jsonResponse) {
         
@@ -90,11 +90,14 @@ function App() {
       {/* Some kind of if statement to handle no response from the API */}
       <ul className="recipesList wrapper" onClick={(e) => getRecipeDetails(e.target.classList[0])}>
         {
+          recipes ? (
           recipes.map( (individualRecipe) => {
             return(
               <Result recipeResult={individualRecipe} key={individualRecipe.idMeal}/>
             )
-          })
+          })) : (
+            <p className="noResultsP">We couldn't find any results, try again!</p>
+          )
         }
       </ul>
       <IndividualRecipe recipeDetails={recipeDetails} />

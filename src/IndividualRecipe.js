@@ -40,7 +40,10 @@ const IndividualRecipe = ({ recipeDetails }) => {
         <p>{recipeDetails.strInstructions}</p>
 
         {recipeDetails.strMeal ? (
-            <button className="saveButton" onClick={saveRecipe}>Save for later</button>
+            
+            <div className="saveButtonContainer">
+                <button className="saveButton" onClick={saveRecipe}>Save for later</button>
+            </div>
             ) : (
                 
                 null
