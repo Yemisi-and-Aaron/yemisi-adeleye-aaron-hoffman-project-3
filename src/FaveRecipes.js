@@ -9,7 +9,7 @@ const FaveRecipes = ({recipesArray, getRecipeDetails}) => {
     return(
         <section>
             <h2>Favorite Recipes</h2>
-            <ul>
+            <ul className="faveRecipeUl wrapper">
                 {recipesArray.map( (recipe) => {
                     return(
                   

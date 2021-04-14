@@ -15,14 +15,14 @@ light green: #AAD079
 green: #C3D850
 pastel yellow: #EEE766
 forest green: #2C4C0E
-
+teal: 15484D;
 
 
  */
 
 
 html {
-    background: #AAD079;
+    background: #EDF0DD;
     font-size: 125%;
 }
 
@@ -54,7 +54,7 @@ h2,
 h3,
 form {
     text-align: center;
-    color: #2C4C0E;
+    color: #15484D;
 }
 
 h1 {
@@ -81,14 +81,14 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: solid 1px #2C4C0E;
+    border: solid 1px #5D807D;
     padding: 30px;
     width: 90%;
     margin: 0 auto;
 }
 
 input:focus {
-    outline: 2px solid #2C4C0E;
+    outline: 2px solid #5D807D;
 }
 
 button {
@@ -96,15 +96,15 @@ button {
     margin: 20px 0;
     padding: 15px;
     font-family: 'Raleway', sans-serif;
-    background: #2C4C0E;
+    background: #5D807D;
     color: #fff;
     border: none;
+    transition: background 0.3s;
 
 }
 
 button:hover {
-    background: #fff;
-    color: #2C4C0E;
+    background: #15484D;
 }
 
 label {
@@ -114,16 +114,24 @@ label {
     font-size: 1.5rem;
 }
 
+.noResultsP {
+    margin: 0 auto;
+    padding: 20px;
+    font-size: 1.3rem;
+    color: #15484D;
+}
+
 .recipesList {
     list-style-type: none;
     display: flex;
     flex-wrap: wrap;
-    border: solid 1px #2C4C0E;
+    border: solid 1px #5D807D;
 }
 
 .recipesList li {
     margin: 15px;
     width: calc( 33% - 30px );
+    cursor: pointer;
 }
 /* need to figure out a way to make the h3 stay on one line when screen size shrinks */
 
@@ -151,29 +159,62 @@ label {
 
 .fullRecipe li {
     line-height: 1.2rem;
-    color: #2C4C0E;
+    color: #15484D;
 }
 
 .fullRecipe p {
     margin: 0 50px 30px;
     line-height: 1.5rem;
-    color: #2C4C0E;
+    color: #15484D;
 }
 
-.saveButton {
-    margin: 0 auto;
+section h2 {
+    font-size: 1.8rem;
+}
+
+.faveRecipeUl {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0;
+}
+
+.faveRecipeUl li {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    justify-content: center;
+}
+
+.faveRecipeUl p {
+    margin-top: 30px;
+    margin-right: 20px;
+    color: #15484D;
+    cursor: pointer;
+}
+
+.faveRecipeUl button {
+    width: 100px;
+    padding: 10px;
+}
+
+.saveButtonContainer {
+
+    text-align: center;
+ 
 }
 
 footer {
     padding: 20px;
     text-align: center;
-    background: #2C4C0E;
+    background: #5D807D;
     color: #fff;
 }
 
 footer a {
     text-decoration: none;
-    color:#AAD079;
+    font-weight: bold;
+    color: #fff;
 }
 
 footer a:hover {
@@ -249,6 +290,11 @@ footer a:hover {
 
     .recipesList li {
         width: 100%;
+    }
+
+    .faveRecipeUl li {
+        flex-direction: column;
+        align-items: center;
     }
 }
 
